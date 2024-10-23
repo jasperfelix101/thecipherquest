@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORTA = 3000;
+const PORT = process.env.PORT || 3000; // Use process.env.PORT for production, fallback to 3000 for local
 
 app.use(cors());
 app.use(express.json());
@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(PORTA, () => {
-    console.log(`Server running on http://localhost:${PORTA}`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
 
 // Sample level data
@@ -75,9 +75,3 @@ app.post('/check-answer', (req, res) => {
         res.json({ correct: false });
     }
 });
-
-// Start the server
-// const PORTA = process.env.PORTA || 3000;
-// app.listen(PORTA, () => {
-//     console.log(`Server running on port ${PORTA}`);
-// });
